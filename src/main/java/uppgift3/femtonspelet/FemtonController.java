@@ -2,6 +2,7 @@ package uppgift3.femtonspelet;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -11,7 +12,8 @@ public class FemtonController {
     private double xOffset;
     private double yOffset;
     private final double gridSize = 50.0;
-
+    @FXML
+    private Rectangle emptyRec;
     @FXML
     private Rectangle rec1;
     @FXML
@@ -110,16 +112,55 @@ public class FemtonController {
         double newX = event.getSceneX() - xOffset;
         double newY = event.getSceneY() - yOffset;
 
-
+        // Calculate the snapped position
         double snappedX = Math.round(newX / gridSize) * gridSize;
         double snappedY = Math.round(newY / gridSize) * gridSize;
 
+        // Ensure the rectangle won't move outside the 4x4 space
+        if (snappedX >= 0 && snappedX <= 150 && snappedY >= 0 && snappedY <= 150) {
+            // Calculate the row and column of the target position
+            int targetRow = (int) (snappedY / gridSize);
+            int targetCol = (int) (snappedX / gridSize);
 
-        rectangle.setLayoutX(snappedX);
-        rectangle.setLayoutY(snappedY);
+            // Calculate the row and column of the current position
+            int currentRow = (int) (rectangle.getLayoutY() / gridSize);
+            int currentCol = (int) (rectangle.getLayoutX() / gridSize);
+
+            // Check if the target location is adjacent to the current location
+            boolean isAdjacent = (Math.abs(targetRow - currentRow) == 1 && targetCol == currentCol)
+                    || (Math.abs(targetCol - currentCol) == 1 && targetRow == currentRow);
+
+            if (isAdjacent) {
+                rectangle.setLayoutX(snappedX);
+                rectangle.setLayoutY(snappedY);
+            }
+        }
     }
+        private void handleMouseReleased (MouseEvent event){
+            Rectangle sourceRectangle = (Rectangle) event.getSource();
 
-    private void handleMouseReleased(MouseEvent event) {
+            // Ensure that the empty rectangle is part of the GridPane
+            if (emptyRec.getParent() instanceof GridPane) {
+                // Calculate the row and column indices of the source and empty rectangles
+                int sourceRow = GridPane.getRowIndex(sourceRectangle);
+                int sourceColumn = GridPane.getColumnIndex(sourceRectangle);
+                int emptyRow = GridPane.getRowIndex(emptyRec);
+                int emptyColumn = GridPane.getColumnIndex(emptyRec);
 
+                // Check if the source rectangle is adjacent to the empty rectangle
+                if ((Math.abs(sourceRow - emptyRow) == 1 && sourceColumn == emptyColumn) ||
+                        (Math.abs(sourceColumn - emptyColumn) == 1 && sourceRow == emptyRow)) {
+                    // Swap the positions of the source rectangle and the empty rectangle
+                    emptyRec.setLayoutX(sourceRectangle.getLayoutX());
+                    emptyRec.setLayoutY(sourceRectangle.getLayoutY());
+                    GridPane.setRowIndex(emptyRec, sourceRow);
+                    GridPane.setColumnIndex(emptyRec, sourceColumn);
+
+                    sourceRectangle.setLayoutX(emptyRec.getLayoutX());
+                    sourceRectangle.setLayoutY(emptyRec.getLayoutY());
+                    GridPane.setRowIndex(sourceRectangle, emptyRow);
+                    GridPane.setColumnIndex(sourceRectangle, emptyColumn);
+                }
+            }
+        }
     }
-}
