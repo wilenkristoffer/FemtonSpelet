@@ -1,22 +1,23 @@
 package uppgift3.femtonspelet;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
 import java.util.Random;
 
 public class FemtonController {
-
     @FXML
     private GridPane gridPane;
 
-    private Rectangle[][] puzzleLayout;
+    private Group[][] puzzleLayout;
     private int emptyRow;
     private int emptyCol;
 
     public void initialize() {
-        puzzleLayout = new Rectangle[4][4];
+        puzzleLayout = new Group[4][4];
         initializePuzzle();
         shufflePuzzle();
         updatePuzzleUI();
@@ -29,9 +30,9 @@ public class FemtonController {
                 if (row == 3 && col == 3) {
                     puzzleLayout[row][col] = null;
                 } else {
-                    Rectangle rectangle = createPuzzlePiece(number);
-                    puzzleLayout[row][col] = rectangle;
-                    gridPane.add(rectangle, col, row);
+                    Group puzzlePiece = createPuzzlePiece(number);
+                    puzzleLayout[row][col] = puzzlePiece;
+                    gridPane.add(puzzlePiece, col, row);
                     number++;
                 }
             }
@@ -40,20 +41,28 @@ public class FemtonController {
         emptyCol = 3;
     }
 
-    private Rectangle createPuzzlePiece(int number) {
+    private Group createPuzzlePiece(int number) {
         Rectangle rectangle = new Rectangle(50, 50);
         rectangle.setFill(javafx.scene.paint.Color.DODGERBLUE);
         rectangle.setArcWidth(5);
         rectangle.setArcHeight(5);
 
         Text text = new Text(String.valueOf(number));
-        text.setTextAlignment(javafx.scene.text.TextAlignment.CENTER);
-        text.setTextOrigin(javafx.geometry.VPos.TOP);
-        rectangle.setUserData(text);
+        text.setFont(Font.font(16));
+        double textWidth = text.getLayoutBounds().getWidth();
+        double textHeight = text.getLayoutBounds().getHeight();
 
-        rectangle.setOnMouseClicked(event -> handleRectangleClick(rectangle));
+        double x = (rectangle.getWidth() - textWidth) / 2;
+        double y = (rectangle.getHeight() - textHeight);
 
-        return rectangle;
+        text.setX(x);
+        text.setY(y);
+
+        Group group = new Group(rectangle, text);
+
+        group.setOnMouseClicked(event -> handleRectangleClick(group));
+
+        return group;
     }
 
     private void shufflePuzzle() {
@@ -65,22 +74,22 @@ public class FemtonController {
             int newCol = emptyCol;
 
             switch (randomMove) {
-                case 0: // Up
+                case 0:
                     newRow = Math.min(emptyRow + 1, 3);
                     break;
-                case 1: // Down
+                case 1:
                     newRow = Math.max(emptyRow - 1, 0);
                     break;
-                case 2: // Left
+                case 2:
                     newCol = Math.min(emptyCol + 1, 3);
                     break;
-                case 3: // Right
+                case 3:
                     newCol = Math.max(emptyCol - 1, 0);
                     break;
             }
 
             if ((newRow != emptyRow || newCol != emptyCol)) {
-                Rectangle temp = puzzleLayout[newRow][newCol];
+                Group temp = puzzleLayout[newRow][newCol];
                 puzzleLayout[newRow][newCol] = null;
                 puzzleLayout[emptyRow][emptyCol] = temp;
                 emptyRow = newRow;
@@ -89,13 +98,13 @@ public class FemtonController {
         }
     }
 
-    private void handleRectangleClick(Rectangle clickedRectangle) {
-        int clickedRow = GridPane.getRowIndex(clickedRectangle);
-        int clickedCol = GridPane.getColumnIndex(clickedRectangle);
+    private void handleRectangleClick(Group clickedGroup) {
+        int clickedRow = GridPane.getRowIndex(clickedGroup);
+        int clickedCol = GridPane.getColumnIndex(clickedGroup);
 
         if ((clickedRow == emptyRow && Math.abs(clickedCol - emptyCol) == 1)
                 || (clickedCol == emptyCol && Math.abs(clickedRow - emptyRow) == 1)) {
-            puzzleLayout[emptyRow][emptyCol] = clickedRectangle;
+            puzzleLayout[emptyRow][emptyCol] = clickedGroup;
             puzzleLayout[clickedRow][clickedCol] = null;
             emptyRow = clickedRow;
             emptyCol = clickedCol;
@@ -109,11 +118,12 @@ public class FemtonController {
 
         for (int row = 0; row < 4; row++) {
             for (int col = 0; col < 4; col++) {
-                Rectangle rectangle = puzzleLayout[row][col];
-                if (rectangle != null) {
-                    gridPane.add(rectangle, col, row);
+                Group puzzlePiece = puzzleLayout[row][col];
+                if (puzzlePiece != null) {
+                    gridPane.add(puzzlePiece, col, row);
                 }
             }
         }
     }
 }
+
