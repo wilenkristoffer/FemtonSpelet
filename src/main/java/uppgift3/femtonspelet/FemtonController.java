@@ -2,6 +2,7 @@ package uppgift3.femtonspelet;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 
@@ -43,35 +44,52 @@ public class FemtonController {
     private Rectangle rec8;
     @FXML
     private Text text8;
+    @FXML
+    private Rectangle rec9;
+    @FXML
+    private Text text9;
+    @FXML
+    private Rectangle rec10;
+    @FXML
+    private Text text10;
+    @FXML
+    private Rectangle rec11;
+    @FXML
+    private Text text11;
+    @FXML
+    private Rectangle rec12;
+    @FXML
+    private Text text12;
+    @FXML
+    private Rectangle rec13;
+    @FXML
+    private Text text13;
+    @FXML
+    private Rectangle rec14;
+    @FXML
+    private Text text14;
+    @FXML
+    private Rectangle rec15;
+    @FXML
+    private Text text15;
 
 
     public void kopplaTextMedRektangel() {
 
 
-        text1.xProperty().bind(rec1.layoutXProperty());
-        text1.yProperty().bind(rec1.layoutYProperty());
-        text2.xProperty().bind(rec2.layoutXProperty().add(10));
-        text2.yProperty().bind(rec2.layoutYProperty().add(10));
+        VBox root = (VBox) text1.getScene().getRoot();
 
-        rec1.setOnMousePressed(this::handleMousePressed);
-        rec1.setOnMouseDragged(this::handleMouseDragged);
-        rec2.setOnMousePressed(this::handleMousePressed);
-        rec2.setOnMouseDragged(this::handleMouseDragged);
+        for (int i = 1; i <= 15; i++) {
+            Rectangle rec = (Rectangle) root.lookup("#rec" + i);
+            Text text = (Text) root.lookup("#text" + i);
 
-        text3.xProperty().bind(rec3.layoutXProperty());
-        text3.yProperty().bind(rec3.layoutYProperty());
-        text4.xProperty().bind(rec4.layoutXProperty());
-        text4.yProperty().bind(rec4.layoutYProperty());
+            text.xProperty().bind(rec.layoutXProperty());
+            text.yProperty().bind(rec.layoutYProperty());
 
-        rec3.setOnMousePressed(this::handleMousePressed);
-        rec3.setOnMouseDragged(this::handleMouseDragged);
-        rec4.setOnMousePressed(this::handleMousePressed);
-        rec4.setOnMouseDragged(this::handleMouseDragged);
+            setDraggable(rec);
 
 
-        setDraggable(rec1);
-        setDraggable(rec2);
-
+        }
     }
 
     private void setDraggable(Rectangle rectangle) {
