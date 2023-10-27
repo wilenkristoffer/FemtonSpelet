@@ -6,48 +6,85 @@
 <?import javafx.scene.text.*?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uppgift3.femtonspelet.FemtonController">
-    <children>
-        <ToolBar prefHeight="40.0" prefWidth="200.0">
-            <items>
-            <MenuButton fx:id="meny" mnemonicParsing="false" text="Menu">
-              <items>
-                <MenuItem mnemonicParsing="false" text="Nytt spel" />
-                <MenuItem mnemonicParsing="false" text="admin" />
-              </items>
-            </MenuButton>
-            </items>
-        </ToolBar>
-        <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="250.0">
-            <Rectangle fx:id="rec1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text1" layoutX="20" layoutY="20" text="1" textAlignment="CENTER" textOrigin="TOP" />
-            <Rectangle fx:id="rec2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text2" layoutX="20.0" layoutY="20.0" text="2" textAlignment="CENTER" textOrigin="TOP" />
-            <Rectangle fx:id="rec3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="100.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text3" layoutX="20.0" layoutY="20.0" text="3" textAlignment="CENTER" textOrigin="TOP" />
-            <Rectangle fx:id="rec4" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="150.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text4" layoutX="20.0" layoutY="20.0" text="4" textAlignment="CENTER" textOrigin="TOP" />
-            <Rectangle fx:id="rec5" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" GridPane.rowIndex="1" />
-            <Text fx:id="text5" layoutX="20.0" layoutY="20.0" text="5" textAlignment="CENTER" textOrigin="TOP" />
-            <Rectangle fx:id="rec6" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="50.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Text fx:id="text6" layoutX="20.0" layoutY="20.0" text="6" textAlignment="CENTER" textOrigin="TOP" />
-            <Rectangle fx:id="rec7" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="100.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Text fx:id="text7" layoutX="20.0" layoutY="20.0" text="7" textAlignment="CENTER" textOrigin="TOP" />
-            <Rectangle fx:id="rec8" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="150.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Text fx:id="text8" layoutX="20.0" layoutY="20.0" text="8" textAlignment="CENTER" textOrigin="TOP" />
-            <Rectangle fx:id="rec9" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text9" layoutX="20.0" layoutY="20.0" text="9" textAlignment="CENTER" textOrigin="TOP" />
-            <Rectangle fx:id="rec10" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="50.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text10" layoutX="20.0" layoutY="20.0" text="10" textAlignment="CENTER" textOrigin="TOP" />
-            <Rectangle fx:id="rec11" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="100.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text11" layoutX="20.0" layoutY="20.0" text="11" textAlignment="CENTER" textOrigin="TOP" />
-            <Rectangle fx:id="rec12" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="150.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text12" layoutX="20.0" layoutY="20.0" text="12" textAlignment="CENTER" textOrigin="TOP" />
-            <Rectangle fx:id="rec13" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" width="50.0" GridPane.rowIndex="3" />
-            <Text fx:id="text13" layoutX="20.0" layoutY="20.0" text="13" textAlignment="CENTER" textOrigin="TOP" />
-            <Rectangle fx:id="rec14" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="50.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text14" layoutX="20.0" layoutY="20.0" text="14" textAlignment="CENTER" textOrigin="TOP" />
-            <Rectangle fx:id="rec15" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="100.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text15" layoutX="20.0" layoutY="20.0" text="15" textAlignment="CENTER" textOrigin="TOP" />
-        </Pane>
-    </children>
+    <ToolBar prefHeight="40.0" prefWidth="200.0">
+        <Button mnemonicParsing="false" text="Nytt spel" />
+    </ToolBar>
+    <GridPane fx:id="gridPane">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="50.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+        <Rectangle fx:id="rec1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" width="50.0" height="50.0" GridPane.columnIndex="0" GridPane.rowIndex="0" />
+        <Text fx:id="text1" text="1" textAlignment="CENTER" textOrigin="TOP" GridPane.rowIndex="0" GridPane.columnIndex="0" />
+
+        <!-- Column 2 -->
+        <Rectangle fx:id="rec2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" width="50.0" height="50.0" GridPane.columnIndex="1" GridPane.rowIndex="0" />
+        <Text fx:id="text2" text="2" textAlignment="CENTER" textOrigin="TOP" GridPane.rowIndex="0" GridPane.columnIndex="1" />
+
+        <!-- Column 3 -->
+        <Rectangle fx:id="rec3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" width="50.0" height="50.0" GridPane.columnIndex="2" GridPane.rowIndex="0" />
+        <Text fx:id="text3" text="3" textAlignment="CENTER" textOrigin="TOP" GridPane.rowIndex="0" GridPane.columnIndex="2" />
+
+        <!-- Column 4 -->
+        <Rectangle fx:id="rec4" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" width="50.0" height="50.0" GridPane.columnIndex="3" GridPane.rowIndex="0" />
+        <Text fx:id="text4" text="4" textAlignment="CENTER" textOrigin="TOP" GridPane.rowIndex="0" GridPane.columnIndex="3" />
+
+        <Rectangle fx:id="rec5" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" width="50.0" height="50.0" GridPane.columnIndex="0" GridPane.rowIndex="1" />
+        <Text fx:id="text5" text="5" textAlignment="CENTER" textOrigin="TOP" GridPane.rowIndex="1" GridPane.columnIndex="0" />
+
+        <!-- Column 6 -->
+        <Rectangle fx:id="rec6" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" width="50.0" height="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+        <Text fx:id="text6" text="6" textAlignment="CENTER" textOrigin="TOP" GridPane.rowIndex="1" GridPane.columnIndex="1" />
+
+        <!-- Column 7 -->
+        <Rectangle fx:id="rec7" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" width="50.0" height="50.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+        <Text fx:id="text7" text="7" textAlignment="CENTER" textOrigin="TOP" GridPane.rowIndex="1" GridPane.columnIndex="2" />
+
+        <!-- Column 8 -->
+        <Rectangle fx:id="rec8" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" width="50.0" height="50.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+        <Text fx:id="text8" text="8" textAlignment="CENTER" textOrigin="TOP" GridPane.rowIndex="1" GridPane.columnIndex="3" />
+
+        <!-- Column 9 -->
+        <Rectangle fx:id="rec9" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" width="50.0" height="50.0" GridPane.columnIndex="0" GridPane.rowIndex="2" />
+        <Text fx:id="text9" text="9" textAlignment="CENTER" textOrigin="TOP" GridPane.rowIndex="2" GridPane.columnIndex="0" />
+
+        <!-- Column 10 -->
+        <Rectangle fx:id="rec10" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" width="50.0" height="50.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+        <Text fx:id="text10" text="10" textAlignment="CENTER" textOrigin="TOP" GridPane.rowIndex="2" GridPane.columnIndex="1" />
+
+        <!-- Column 11 -->
+        <Rectangle fx:id="rec11" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" width="50.0" height="50.0" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+        <Text fx:id="text11" text="11" textAlignment="CENTER" textOrigin="TOP" GridPane.rowIndex="2" GridPane.columnIndex="2" />
+
+        <!-- Column 12 -->
+        <Rectangle fx:id="rec12" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" width="50.0" height="50.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
+        <Text fx:id="text12" text="12" textAlignment="CENTER" textOrigin="TOP" GridPane.rowIndex="2" GridPane.columnIndex="3" />
+
+        <!-- Column 13 -->
+        <Rectangle fx:id="rec13" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" width="50.0" height="50.0" GridPane.columnIndex="0" GridPane.rowIndex="3" />
+        <Text fx:id="text13" text="13" textAlignment="CENTER" textOrigin="TOP" GridPane.rowIndex="3" GridPane.columnIndex="0" />
+
+        <!-- Column 14 -->
+        <Rectangle fx:id="rec14" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" width="50.0" height="50.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+        <Text fx:id="text14" text="14" textAlignment="CENTER" textOrigin="TOP" GridPane.rowIndex="3" GridPane.columnIndex="1" />
+
+        <!-- Column 15 -->
+        <Rectangle fx:id="rec15" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" width="50.0" height="50.0" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+        <Text fx:id="text15" text="15" textAlignment="CENTER" textOrigin="TOP" GridPane.rowIndex="3" GridPane.columnIndex="2" />
+
+        <!-- Column 16 -->
+        <Rectangle fx:id="rec16" arcHeight="5.0" arcWidth="5.0" fill="TRANSPARENT" width="50.0" height="50.0" GridPane.columnIndex="3" GridPane.rowIndex="3" />
+        <Text fx:id="text16" text="16" textAlignment="CENTER" textOrigin="TOP" GridPane.rowIndex="3" GridPane.columnIndex="3" />
+
+
+    </GridPane>
+
 </VBox>
