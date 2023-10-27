@@ -7,7 +7,14 @@
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="235.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uppgift3.femtonspelet.FemtonController">
     <ToolBar prefHeight="40.0" prefWidth="200.0">
-        <Button mnemonicParsing="false" text="Nytt spel" />
+        <items>
+            <MenuButton fx:id="meny" mnemonicParsing="false" text="Menu">
+                <items>
+                    <MenuItem mnemonicParsing="false" text="Nytt spel" />
+                    <MenuItem mnemonicParsing="false" text="admin" />
+                </items>
+            </MenuButton>
+        </items>
     </ToolBar>
     <GridPane fx:id="gridPane">
         <columnConstraints>
