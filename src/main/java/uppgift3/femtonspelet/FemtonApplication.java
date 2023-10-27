@@ -1,8 +1,6 @@
 package uppgift3.femtonspelet;
 
 import javafx.application.Application;
-import javafx.beans.property.DoubleProperty;
-import javafx.beans.property.SimpleDoubleProperty;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 

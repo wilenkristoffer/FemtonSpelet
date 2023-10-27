@@ -9,40 +9,45 @@
     <children>
         <ToolBar prefHeight="40.0" prefWidth="200.0">
             <items>
-                <Button mnemonicParsing="false" text="Nytt spel" />
+            <MenuButton fx:id="meny" mnemonicParsing="false" text="Menu">
+              <items>
+                <MenuItem mnemonicParsing="false" text="Nytt spel" />
+                <MenuItem mnemonicParsing="false" text="admin" />
+              </items>
+            </MenuButton>
             </items>
         </ToolBar>
         <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="250.0">
             <Rectangle fx:id="rec1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="1.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text1" text="1" layoutX="20" layoutY="20" textOrigin="TOP" textAlignment="CENTER"/>
+            <Text fx:id="text1" layoutX="20" layoutY="20" text="1" textAlignment="CENTER" textOrigin="TOP" />
             <Rectangle fx:id="rec2" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text2" text="2" layoutX="20.0" layoutY="20.0" textOrigin="TOP" textAlignment="CENTER"/>
+            <Text fx:id="text2" layoutX="20.0" layoutY="20.0" text="2" textAlignment="CENTER" textOrigin="TOP" />
             <Rectangle fx:id="rec3" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="100.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text3" text="3" layoutX="20.0" layoutY="20.0" textOrigin="TOP" textAlignment="CENTER"/>
+            <Text fx:id="text3" layoutX="20.0" layoutY="20.0" text="3" textAlignment="CENTER" textOrigin="TOP" />
             <Rectangle fx:id="rec4" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="150.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text4" text="4" layoutX="20.0" layoutY="20.0" textOrigin="TOP" textAlignment="CENTER"/>
+            <Text fx:id="text4" layoutX="20.0" layoutY="20.0" text="4" textAlignment="CENTER" textOrigin="TOP" />
             <Rectangle fx:id="rec5" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" GridPane.rowIndex="1" />
-            <Text fx:id="text5" text="5" layoutX="20.0" layoutY="20.0" textOrigin="TOP" textAlignment="CENTER"/>
+            <Text fx:id="text5" layoutX="20.0" layoutY="20.0" text="5" textAlignment="CENTER" textOrigin="TOP" />
             <Rectangle fx:id="rec6" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="50.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <Text fx:id="text6" text="6" layoutX="20.0" layoutY="20.0" textOrigin="TOP" textAlignment="CENTER"/>
+            <Text fx:id="text6" layoutX="20.0" layoutY="20.0" text="6" textAlignment="CENTER" textOrigin="TOP" />
             <Rectangle fx:id="rec7" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="100.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-            <Text fx:id="text7" text="7" layoutX="20.0" layoutY="20.0" textOrigin="TOP" textAlignment="CENTER"/>
+            <Text fx:id="text7" layoutX="20.0" layoutY="20.0" text="7" textAlignment="CENTER" textOrigin="TOP" />
             <Rectangle fx:id="rec8" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="150.0" layoutY="50.0" stroke="BLACK" strokeType="INSIDE" width="50.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-            <Text fx:id="text8" text="8" layoutX="20.0" layoutY="20.0" textOrigin="TOP" textAlignment="CENTER"/>
+            <Text fx:id="text8" layoutX="20.0" layoutY="20.0" text="8" textAlignment="CENTER" textOrigin="TOP" />
             <Rectangle fx:id="rec9" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text9" text="9" layoutX="20.0" layoutY="20.0" textOrigin="TOP" textAlignment="CENTER"/>
+            <Text fx:id="text9" layoutX="20.0" layoutY="20.0" text="9" textAlignment="CENTER" textOrigin="TOP" />
             <Rectangle fx:id="rec10" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="50.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text10" text="10" layoutX="20.0" layoutY="20.0" textOrigin="TOP" textAlignment="CENTER"/>
+            <Text fx:id="text10" layoutX="20.0" layoutY="20.0" text="10" textAlignment="CENTER" textOrigin="TOP" />
             <Rectangle fx:id="rec11" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="100.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text11" text="11" layoutX="20.0" layoutY="20.0" textOrigin="TOP" textAlignment="CENTER"/>
+            <Text fx:id="text11" layoutX="20.0" layoutY="20.0" text="11" textAlignment="CENTER" textOrigin="TOP" />
             <Rectangle fx:id="rec12" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="150.0" layoutY="100.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text12" text="12" layoutX="20.0" layoutY="20.0" textOrigin="TOP" textAlignment="CENTER"/>
+            <Text fx:id="text12" layoutX="20.0" layoutY="20.0" text="12" textAlignment="CENTER" textOrigin="TOP" />
             <Rectangle fx:id="rec13" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" width="50.0" GridPane.rowIndex="3" />
-            <Text fx:id="text13" text="13" layoutX="20.0" layoutY="20.0" textOrigin="TOP" textAlignment="CENTER"/>
+            <Text fx:id="text13" layoutX="20.0" layoutY="20.0" text="13" textAlignment="CENTER" textOrigin="TOP" />
             <Rectangle fx:id="rec14" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="50.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text14" text="14" layoutX="20.0" layoutY="20.0" textOrigin="TOP" textAlignment="CENTER"/>
+            <Text fx:id="text14" layoutX="20.0" layoutY="20.0" text="14" textAlignment="CENTER" textOrigin="TOP" />
             <Rectangle fx:id="rec15" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="100.0" layoutY="148.0" stroke="BLACK" strokeType="INSIDE" width="50.0" />
-            <Text fx:id="text15" text="15" layoutX="20.0" layoutY="20.0" textOrigin="TOP" textAlignment="CENTER"/>
+            <Text fx:id="text15" layoutX="20.0" layoutY="20.0" text="15" textAlignment="CENTER" textOrigin="TOP" />
         </Pane>
     </children>
 </VBox>
