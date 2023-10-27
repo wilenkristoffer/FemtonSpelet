@@ -21,7 +21,7 @@ public class FemtonApplication extends Application {
         stage.show();
 
             FemtonController controller = fxmlLoader.getController();
-            controller.kopplaTextMedRektangel();
+            controller.initialize();
     }
 
     public static void main(String[] args) {
