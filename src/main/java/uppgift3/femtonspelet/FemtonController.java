@@ -1,6 +1,8 @@
 package uppgift3.femtonspelet;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
+import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -15,6 +17,8 @@ public class FemtonController {
     private Group[][] puzzleLayout;
     private int emptyRow;
     private int emptyCol;
+    @FXML
+    private Label winner;
 
     public void initialize() {
         puzzleLayout = new Group[4][4];
@@ -46,6 +50,10 @@ public class FemtonController {
         rectangle.setFill(javafx.scene.paint.Color.DODGERBLUE);
         rectangle.setArcWidth(5);
         rectangle.setArcHeight(5);
+
+
+        rectangle.setStroke(javafx.scene.paint.Color.BLACK);
+        rectangle.setStrokeWidth(1.5);
 
         Text text = new Text(String.valueOf(number));
         text.setFont(Font.font(16));
@@ -111,6 +119,7 @@ public class FemtonController {
 
             updatePuzzleUI();
         }
+        winner.setVisible(isPuzzleSolved());
     }
 
     private void updatePuzzleUI() {
@@ -125,5 +134,35 @@ public class FemtonController {
             }
         }
     }
-}
 
+    public void nyttSpel(ActionEvent actionEvent) {
+        shufflePuzzle();
+        updatePuzzleUI();
+        winner.setVisible(false);
+    }
+
+    private boolean isPuzzleSolved() {
+        int expectedNumber = 1;
+
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 4; col++) {
+                Group puzzlePiece = puzzleLayout[row][col];
+                if (puzzlePiece != null) {
+                    Text text = (Text) puzzlePiece.getChildren().get(1);
+                    int textValue = Integer.parseInt(text.getText());
+                    if (textValue != expectedNumber) {
+                        return false;
+                    }
+                } else {
+                    if (row != 3 || col != 3) {
+                        return false;
+                    }
+                }
+                expectedNumber++;
+            }
+        }
+
+        return true;
+    }
+
+}
