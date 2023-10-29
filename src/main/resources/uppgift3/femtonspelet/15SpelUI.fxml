@@ -9,7 +9,7 @@
     <ToolBar prefHeight="40.0" prefWidth="200.0">
         <MenuButton fx:id="meny" mnemonicParsing="false" text="Menu">
             <items>
-                <MenuItem mnemonicParsing="false" text="Nytt spel" />
+                <MenuItem mnemonicParsing="false" text="Nytt spel" onAction="#handleNewGame"/>
                 <MenuItem mnemonicParsing="false" text="Toggle admin" />
             </items>
         </MenuButton>

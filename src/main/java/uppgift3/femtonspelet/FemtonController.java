@@ -1,6 +1,8 @@
 package uppgift3.femtonspelet;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -11,10 +13,10 @@ import java.util.Random;
 public class FemtonController {
     @FXML
     private GridPane gridPane;
-
     private Group[][] puzzleLayout;
     private int emptyRow;
     private int emptyCol;
+
 
     public void initialize() {
         puzzleLayout = new Group[4][4];
@@ -124,6 +126,10 @@ public class FemtonController {
                 }
             }
         }
+    }
+    public void handleNewGame(ActionEvent actionEvent) {
+        shufflePuzzle();
+        updatePuzzleUI();
     }
 }
 
