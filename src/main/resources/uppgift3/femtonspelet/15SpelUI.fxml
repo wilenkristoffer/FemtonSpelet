@@ -36,15 +36,17 @@
         </GridPane>
     </VBox>
 
-    <Label fx:id="winner" text="YOU WIN!" visible="false">
-        <font>
-            <Font name="System Bold" size="24" />
-        </font>
-        <textFill>
-            <Color green="0.4" />
-        </textFill>
-        <effect>
-            <DropShadow />
-        </effect>
-    </Label>
+    <VBox alignment="CENTER">
+        <Label fx:id="winner" text="YOU WIN!" visible="false">
+            <font>
+                <Font name="System Bold" size="24" />
+            </font>
+            <textFill>
+                <Color green="0.4" />
+            </textFill>
+            <effect>
+                <DropShadow />
+            </effect>
+        </Label>
+    </VBox>
 </VBox>
