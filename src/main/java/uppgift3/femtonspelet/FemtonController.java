@@ -1,30 +1,71 @@
 package uppgift3.femtonspelet;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
+import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.Random;
 
 public class FemtonController {
     @FXML
+    public Label timerLabel;
+    @FXML
     private GridPane gridPane;
-
     private Group[][] puzzleLayout;
     private int emptyRow;
     private int emptyCol;
     @FXML
-    private Label winner;
+    private VBox mainVbox;
+    private int elapsedSeconds = 0;
+    private Timeline timerTimeline;
+
+
 
     public void initialize() {
         puzzleLayout = new Group[4][4];
         initializePuzzle();
         shufflePuzzle();
         updatePuzzleUI();
+
+
+        if (timerTimeline != null) {
+            timerTimeline.stop();
+        }
+        //Vid nytt spel så resettar vi timern
+        elapsedSeconds = 0;
+
+        timerTimeline = new Timeline(new KeyFrame(Duration.seconds(1), event -> updateTimer()));
+        timerTimeline.setCycleCount(Timeline.INDEFINITE);
+        timerTimeline.play();
+    }
+
+    private void updateTimer() {
+        elapsedSeconds++;
+        int minutes = elapsedSeconds / 60;
+        int seconds = elapsedSeconds % 60;
+        String timeString = String.format("%02d:%02d", minutes, seconds);
+        timerLabel.setText(timeString);
     }
 
     private void initializePuzzle() {
@@ -45,9 +86,10 @@ public class FemtonController {
         emptyCol = 3;
     }
 
+
     private Group createPuzzlePiece(int number) {
         Rectangle rectangle = new Rectangle(50, 50);
-        rectangle.setFill(javafx.scene.paint.Color.DODGERBLUE);
+        rectangle.setFill(Color.web("#FFA500"));
         rectangle.setArcWidth(5);
         rectangle.setArcHeight(5);
 
@@ -68,7 +110,13 @@ public class FemtonController {
 
         Group group = new Group(rectangle, text);
 
-        group.setOnMouseClicked(event -> handleRectangleClick(group));
+        group.setOnMouseClicked(event -> {
+            try {
+                handleRectangleClick(group);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        });
 
         return group;
     }
@@ -106,7 +154,7 @@ public class FemtonController {
         }
     }
 
-    private void handleRectangleClick(Group clickedGroup) {
+    private void handleRectangleClick(Group clickedGroup) throws IOException {
         int clickedRow = GridPane.getRowIndex(clickedGroup);
         int clickedCol = GridPane.getColumnIndex(clickedGroup);
 
@@ -119,7 +167,9 @@ public class FemtonController {
 
             updatePuzzleUI();
         }
-        winner.setVisible(isPuzzleSolved());
+        if (isPuzzleSolved()) {
+            showWinnerDialog();
+        }
     }
 
     private void updatePuzzleUI() {
@@ -136,9 +186,8 @@ public class FemtonController {
     }
 
     public void nyttSpel(ActionEvent actionEvent) {
-        shufflePuzzle();
-        updatePuzzleUI();
-        winner.setVisible(false);
+        initialize();
+
     }
 
     private boolean isPuzzleSolved() {
@@ -164,5 +213,63 @@ public class FemtonController {
 
         return true;
     }
+@FXML
+    public void showWinnerDialog() {
+    timerTimeline.stop();
 
+    Dialog<ButtonType> dialog = new Dialog<>();
+    dialog.initOwner(mainVbox.getScene().getWindow());
+    try {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Winner.fxml"));
+        Parent root = loader.load();
+        dialog.getDialogPane().setContent(root);
+
+
+
+    ButtonType spara = new ButtonType("Spara", ButtonBar.ButtonData.OK_DONE);
+    ButtonType stang = new ButtonType("Stäng", ButtonBar.ButtonData.CANCEL_CLOSE);
+    dialog.getDialogPane().getButtonTypes().addAll(spara, stang);
+
+    Optional<ButtonType> result = dialog.showAndWait();
+
+    if (result.isPresent()) {
+        if (result.get() == spara) {
+            WinnerController wc = loader.getController();
+            wc.initialize(timerLabel.getText());
+            wc.clickedSpara();
+        }
+        dialog.close();
+    }
+    } catch (IOException e) {
+        System.out.println("Fel vid laddning av vinnar-dialogen!");
+        throw new RuntimeException(e);
+    }
+}
+
+    @FXML
+    private void handleSolveButtonAction(MouseEvent event) {
+
+        resetPuzzleToSolvedState();
+    }
+
+    private void resetPuzzleToSolvedState() {
+        int number = 1;
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 4; col++) {
+                if (row == 3 && col == 3) {
+                    puzzleLayout[row][col] = null;
+                } else {
+                    Group puzzlePiece = createPuzzlePiece(number);
+                    puzzleLayout[row][col] = puzzlePiece;
+                    number++;
+                }
+            }
+        }
+
+        emptyRow = 3;
+        emptyCol = 3;
+
+        updatePuzzleUI();
+
+    }
 }

@@ -2,11 +2,8 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uppgift3.femtonspelet.FemtonController">
+<VBox fx:id="mainVbox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uppgift3.femtonspelet.FemtonController">
     <ToolBar prefHeight="40.0" prefWidth="200.0">
         <MenuButton mnemonicParsing="false" text="Menu">
             <items>
@@ -15,7 +12,7 @@
             </items>
         </MenuButton>
         <Pane HBox.hgrow="ALWAYS" />
-        <Button fx:id="instantWin" alignment="CENTER" mnemonicParsing="false" text="Instant win" visible="false" />
+        <Button fx:id="instantWin" onMouseClicked="#handleSolveButtonAction" alignment="CENTER" mnemonicParsing="false" text="Instant win" visible="true" />
     </ToolBar>
 
     <VBox>
@@ -35,18 +32,7 @@
             </rowConstraints>
         </GridPane>
     </VBox>
-
     <VBox alignment="CENTER">
-        <Label fx:id="winner" text="YOU WIN!" visible="false">
-            <font>
-                <Font name="System Bold" size="24" />
-            </font>
-            <textFill>
-                <Color green="0.4" />
-            </textFill>
-            <effect>
-                <DropShadow />
-            </effect>
-        </Label>
+        <Label fx:id="timerLabel" text="00:00" />
     </VBox>
 </VBox>
