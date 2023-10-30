@@ -219,12 +219,14 @@ public class FemtonController {
 
     Dialog<ButtonType> dialog = new Dialog<>();
     dialog.initOwner(mainVbox.getScene().getWindow());
+    dialog.setTitle("High-score tavlan");
+
     try {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("Winner.fxml"));
         Parent root = loader.load();
         dialog.getDialogPane().setContent(root);
-
-
+        WinnerController wc = loader.getController();
+        wc.initialize(timerLabel.getText());
 
     ButtonType spara = new ButtonType("Spara", ButtonBar.ButtonData.OK_DONE);
     ButtonType stang = new ButtonType("Stäng", ButtonBar.ButtonData.CANCEL_CLOSE);
@@ -234,11 +236,10 @@ public class FemtonController {
 
     if (result.isPresent()) {
         if (result.get() == spara) {
-            WinnerController wc = loader.getController();
-            wc.initialize(timerLabel.getText());
             wc.clickedSpara();
+        } else if (result.get() == stang) {
+            dialog.close();
         }
-        dialog.close();
     }
     } catch (IOException e) {
         System.out.println("Fel vid laddning av vinnar-dialogen!");

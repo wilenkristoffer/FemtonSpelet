@@ -1,66 +1,117 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 
-<DialogPane prefHeight="260.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uppgift3.femtonspelet.WinnerController">
+<DialogPane prefHeight="260.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uppgift3.femtonspelet.WinnerController">
     <content>
-    <Pane prefHeight="22.0" prefWidth="250.0">
-        <Label layoutX="58.0" layoutY="6.0" text="Grattis du vann!"/>
-        <HBox layoutY="49.0" prefHeight="31.0" prefWidth="200.0">
-            <Label text="Din tid:"/>
-            <Label text="tiden"/>
+    <Pane prefHeight="22.0" prefWidth="320.0">
+         <HBox alignment="CENTER">
+            <children>
+              <Label text="Grattis du vann!">
+              <font>
+                  <Font name="System Bold" size="24" />
+              </font>
+              <textFill>
+                  <Color green="0.4" />
+              </textFill>
+              <effect>
+                  <DropShadow />
+              </effect>
+                  <HBox.margin>
+                     <Insets left="75.0" />
+                  </HBox.margin>
+          </Label>
+            </children>
+         </HBox>
+        <HBox alignment="CENTER" layoutY="35.0" prefHeight="31.0" prefWidth="320.0">
+            <Label text="Din tid:">
+               <font>
+                  <Font size="14.0" />
+               </font>
+                <style>
+                    -fx-font-weight: bold;
+                </style></Label>
+            <Label fx:id="tiden" text="tiden">
+            <font>
+            <Font size="14.0" />
+
+            </font>
+                <style>
+                    -fx-font-weight: bold;
+                </style></Label>
         </HBox>
-        <VBox layoutY="80.0" prefHeight="100.0" prefWidth="200.0">
-            <HBox alignment="CENTER">
-                <Label text="Highscore"/>
+        <VBox layoutY="80.0" prefHeight="100.0" prefWidth="370.0">
+            <HBox>
+                <Label text="Datum:" />
+                <Region prefHeight="10.0" prefWidth="90.0" />
+                <Label text="Namn:" />
+                <Region prefHeight="10.0" prefWidth="110.0" />
+                <Label text="Tid:" />
             </HBox>
             <HBox>
-                <Label fx:id="datum1" text="datum1"/>
-                <Region prefHeight="10.0" prefWidth="40.0"/>
-                <Label fx:id="namn1" text="namn1"/>
-                <Region prefHeight="10.0" prefWidth="60.0"/>
-                <Label fx:id="tid1" text="tid1"/>
+                <Label fx:id="datum1" minWidth="100.0" text="datum1" />
+                <Region prefHeight="10.0" prefWidth="0.0" />
+                <Label text="Nr 1:" />
+                <Region prefHeight="10.0" prefWidth="5.0" />
+                <Label fx:id="namn1" minWidth="100.0" text="namn1" />
+                <Region prefHeight="10.0" prefWidth="40.0" />
+                <Label fx:id="tid1" text="tid1" />
             </HBox>
+
             <HBox>
-                <Label fx:id="datum2" text="datum2"/>
-                <Region prefHeight="10.0" prefWidth="40.0"/>
-                <Label fx:id="namn2" text="namn2"/>
-                <Region prefHeight="10.0" prefWidth="60.0"/>
-                <Label fx:id="tid2" text="tid2"/>
+                <Label fx:id="datum2" minWidth="100.0" text="datum2" />
+                <Region prefHeight="10.0" prefWidth="0.0" />
+                <Label text="Nr 2:" />
+                <Region prefHeight="10.0" prefWidth="5.0" />
+                <Label fx:id="namn2" minWidth="100.0" text="namn2" />
+                <Region prefHeight="10.0" prefWidth="40.0" />
+                <Label fx:id="tid2" text="tid2" />
             </HBox>
+
             <HBox>
-                <Label fx:id="datum3" text="datum3"/>
-                <Region prefHeight="10.0" prefWidth="40.0"/>
-                <Label fx:id="namn3" text="namn3"/>
-                <Region prefHeight="10.0" prefWidth="60.0"/>
-                <Label fx:id="tid3" text="tid3"/>
+                <Label fx:id="datum3" minWidth="100.0" text="datum3" />
+                <Region prefHeight="10.0" prefWidth="0.0" />
+                <Label text="Nr 3:" />
+                <Region prefHeight="10.0" prefWidth="5.0" />
+                <Label fx:id="namn3" minWidth="100.0" text="namn3" />
+                <Region prefHeight="10.0" prefWidth="40.0" />
+                <Label fx:id="tid3" text="tid3" />
             </HBox>
+
             <HBox>
-                <Label fx:id="datum4" text="datum4"/>
-                <Region prefHeight="10.0" prefWidth="40.0"/>
-                <Label fx:id="namn4" text="namn4"/>
-                <Region prefHeight="10.0" prefWidth="60.0"/>
-                <Label fx:id="tid4" text="tid4"/>
+                <Label fx:id="datum4" minWidth="100.0" text="datum4" />
+                <Region prefHeight="10.0" prefWidth="0.0" />
+                <Label text="Nr 4:" />
+                <Region prefHeight="10.0" prefWidth="5.0" />
+                <Label fx:id="namn4" minWidth="100.0" text="namn4" />
+                <Region prefHeight="10.0" prefWidth="40.0" />
+                <Label fx:id="tid4" text="tid4" />
             </HBox>
+
             <HBox>
-                <Label fx:id="datum5" text="datum5"/>
-                <Region prefHeight="10.0" prefWidth="40.0"/>
-                <Label fx:id="namn5" text="namn5"/>
-                <Region prefHeight="10.0" prefWidth="60.0"/>
-                <Label fx:id="tid5" text="tid5"/>
+                <Label fx:id="datum5" minWidth="100.0" text="datum5" />
+                <Region prefHeight="10.0" prefWidth="0.0" />
+                <Label text="Nr 5:" />
+                <Region prefHeight="10.0" prefWidth="5.0" />
+                <Label fx:id="namn5" minWidth="100.0" text="namn5" />
+                <Region prefHeight="10.0" prefWidth="40.0" />
+                <Label fx:id="tid5" text="tid5" />
             </HBox>
         </VBox>
-        <VBox layoutY="200.0" prefHeight="50.0" prefWidth="200.0">
+        <VBox layoutY="200.0" prefHeight="50.0" prefWidth="370.0">
             <HBox>
                 <Label text="Ditt namn:">
                     <font>
-                   <Font size="16.0"/>
+                   <Font size="16.0" />
                     </font>
                 </Label>
-                <Region prefHeight="10.0" prefWidth="10.0"/>
-                <TextField fx:id="nedskrivetNamn" maxWidth="100.0"/>
+                <Region prefHeight="10.0" prefWidth="10.0" />
+                <TextField fx:id="nedskrivetNamn" maxWidth="200.0" />
 
             </HBox>
         </VBox>
