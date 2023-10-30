@@ -185,9 +185,7 @@ public class FemtonController {
     }
 
     public void nyttSpel(ActionEvent actionEvent) {
-
-        shufflePuzzle();
-        updatePuzzleUI();
+        initialize();
 
     }
 
