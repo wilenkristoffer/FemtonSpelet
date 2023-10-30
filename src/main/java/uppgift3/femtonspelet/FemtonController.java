@@ -13,7 +13,6 @@ import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -168,12 +167,10 @@ public class FemtonController {
 
             updatePuzzleUI();
         }
-
         if (isPuzzleSolved()) {
             showWinnerDialog();
         }
     }
-
     private void updatePuzzleUI() {
         gridPane.getChildren().clear();
 
@@ -193,7 +190,6 @@ public class FemtonController {
         updatePuzzleUI();
 
     }
-
 
     private boolean isPuzzleSolved() {
         int expectedNumber = 1;
