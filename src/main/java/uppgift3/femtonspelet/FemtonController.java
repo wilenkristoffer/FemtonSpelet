@@ -11,6 +11,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -26,9 +27,11 @@ public class FemtonController {
     public Label timerLabel;
     @FXML
     private GridPane gridPane;
+
     private Group[][] puzzleLayout;
     private int emptyRow;
     private int emptyCol;
+    private Color currentColor;
     @FXML
     private VBox mainVbox;
     private int elapsedSeconds = 0;
@@ -36,8 +39,10 @@ public class FemtonController {
 
 
     public void initialize() {
-        puzzleLayout = new Group[4][4];
-        initializePuzzle();
+
+        currentColor = Color.DODGERBLUE;
+
+        initializePuzzle(currentColor);
         shufflePuzzle();
         updatePuzzleUI();
 
@@ -61,14 +66,17 @@ public class FemtonController {
         timerLabel.setText(timeString);
     }
 
-    private void initializePuzzle() {
+    private void initializePuzzle(Color color) {
+        puzzleLayout = new Group[4][4];
+
         int number = 1;
         for (int row = 0; row < 4; row++) {
             for (int col = 0; col < 4; col++) {
                 if (row == 3 && col == 3) {
                     puzzleLayout[row][col] = null;
                 } else {
-                    Group puzzlePiece = createPuzzlePiece(number);
+
+                    Group puzzlePiece = createPuzzlePiece(number, color);
                     puzzleLayout[row][col] = puzzlePiece;
                     gridPane.add(puzzlePiece, col, row);
                     number++;
@@ -77,17 +85,17 @@ public class FemtonController {
         }
         emptyRow = 3;
         emptyCol = 3;
+
     }
 
 
-    private Group createPuzzlePiece(int number) {
+    private Group createPuzzlePiece(int number, Color color) {
         Rectangle rectangle = new Rectangle(50, 50);
-        rectangle.setFill(Color.web("#FFA500"));
+        rectangle.setFill(color);
         rectangle.setArcWidth(5);
         rectangle.setArcHeight(5);
 
-
-        rectangle.setStroke(javafx.scene.paint.Color.BLACK);
+        rectangle.setStroke(Color.BLACK);
         rectangle.setStrokeWidth(1.5);
 
         Text text = new Text(String.valueOf(number));
@@ -160,6 +168,7 @@ public class FemtonController {
 
             updatePuzzleUI();
         }
+
         if (isPuzzleSolved()) {
             showWinnerDialog();
         }
@@ -179,9 +188,12 @@ public class FemtonController {
     }
 
     public void nyttSpel(ActionEvent actionEvent) {
-        initialize();
+
+        shufflePuzzle();
+        updatePuzzleUI();
 
     }
+
 
     private boolean isPuzzleSolved() {
         int expectedNumber = 1;
@@ -241,4 +253,33 @@ public class FemtonController {
         }
     }
 
+    public void handleSetBlue() {
+        currentColor = Color.DODGERBLUE;
+        changePuzzleColor(currentColor);
+    }
+
+    public void handleSetOrange() {
+        currentColor = Color.ORANGE;
+        changePuzzleColor(currentColor);
+    }
+
+    public void handleSetRed() {
+        currentColor = Color.RED;
+        changePuzzleColor(currentColor);
+    }
+
+    public void handleSetGreen() {
+        currentColor = Color.GREEN;
+        changePuzzleColor(currentColor);
+    }
+    private void changePuzzleColor(Color color) {
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 4; col++) {
+                if (puzzleLayout[row][col] != null) {
+                    Rectangle rectangle = (Rectangle) puzzleLayout[row][col].getChildren().get(0);
+                    rectangle.setFill(color);
+                }
+            }
+        }
+    }
 }
