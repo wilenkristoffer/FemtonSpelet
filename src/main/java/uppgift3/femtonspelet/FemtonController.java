@@ -3,7 +3,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
+import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -13,28 +15,31 @@ import java.util.Random;
 public class FemtonController {
     @FXML
     private GridPane gridPane;
-
     private Group[][] puzzleLayout;
     private int emptyRow;
     private int emptyCol;
-    @FXML
-    private Label winner;
+    private Color currentColor;
 
     public void initialize() {
-        puzzleLayout = new Group[4][4];
-        initializePuzzle();
+
+        currentColor = Color.DODGERBLUE;
+
+        initializePuzzle(currentColor);
         shufflePuzzle();
         updatePuzzleUI();
     }
 
-    private void initializePuzzle() {
+    private void initializePuzzle(Color color) {
+        puzzleLayout = new Group[4][4];
+
         int number = 1;
         for (int row = 0; row < 4; row++) {
             for (int col = 0; col < 4; col++) {
                 if (row == 3 && col == 3) {
                     puzzleLayout[row][col] = null;
                 } else {
-                    Group puzzlePiece = createPuzzlePiece(number);
+
+                    Group puzzlePiece = createPuzzlePiece(number, color);
                     puzzleLayout[row][col] = puzzlePiece;
                     gridPane.add(puzzlePiece, col, row);
                     number++;
@@ -43,16 +48,17 @@ public class FemtonController {
         }
         emptyRow = 3;
         emptyCol = 3;
+
     }
 
-    private Group createPuzzlePiece(int number) {
+
+    private Group createPuzzlePiece(int number, Color color) {
         Rectangle rectangle = new Rectangle(50, 50);
-        rectangle.setFill(javafx.scene.paint.Color.DODGERBLUE);
+        rectangle.setFill(color);
         rectangle.setArcWidth(5);
         rectangle.setArcHeight(5);
 
-
-        rectangle.setStroke(javafx.scene.paint.Color.BLACK);
+        rectangle.setStroke(Color.BLACK);
         rectangle.setStrokeWidth(1.5);
 
         Text text = new Text(String.valueOf(number));
@@ -119,7 +125,7 @@ public class FemtonController {
 
             updatePuzzleUI();
         }
-        winner.setVisible(isPuzzleSolved());
+
     }
 
     private void updatePuzzleUI() {
@@ -138,8 +144,9 @@ public class FemtonController {
     public void nyttSpel(ActionEvent actionEvent) {
         shufflePuzzle();
         updatePuzzleUI();
-        winner.setVisible(false);
+
     }
+
 
     private boolean isPuzzleSolved() {
         int expectedNumber = 1;
@@ -165,4 +172,23 @@ public class FemtonController {
         return true;
     }
 
+    public void handleSetBlue() {
+        currentColor = Color.DODGERBLUE;
+        initializePuzzle(currentColor);
+    }
+
+    public void handleSetOrange() {
+        currentColor = Color.ORANGE;
+        initializePuzzle(currentColor);
+    }
+
+    public void handleSetRed() {
+        currentColor = Color.RED;
+        initializePuzzle(currentColor);
+    }
+
+    public void handleSetGreen() {
+        currentColor = Color.GREEN;
+        initializePuzzle(currentColor);
+    }
 }

@@ -2,16 +2,22 @@
 
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.effect.*?>
-<?import javafx.scene.paint.*?>
-<?import javafx.scene.text.*?>
 
-<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uppgift3.femtonspelet.FemtonController">
+<?import javafx.scene.text.Font?>
+<VBox fx:id="mainVbox" prefHeight="250.0" prefWidth="200.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uppgift3.femtonspelet.FemtonController">
     <ToolBar prefHeight="40.0" prefWidth="200.0">
-        <MenuButton mnemonicParsing="false" text="Menu">
+        <MenuButton mnemonicParsing="false" text="Meny">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#nyttSpel" text="Nytt spel" />
                 <MenuItem mnemonicParsing="false" text="Toggle admin" />
+                <Menu text="Färg">
+                    <items>
+                        <MenuItem onAction="#handleSetBlue" text="Blå" />
+                        <MenuItem onAction="#handleSetOrange" text="Orange" />
+                        <MenuItem onAction="#handleSetRed" text="Röd" />
+                        <MenuItem onAction="#handleSetGreen" text="Grön" />
+                    </items>
+                </Menu>
             </items>
         </MenuButton>
         <Pane HBox.hgrow="ALWAYS" />
@@ -19,8 +25,7 @@
     </ToolBar>
 
     <VBox>
-
-        <GridPane fx:id="gridPane" prefHeight="205.0" prefWidth="200.0">
+        <GridPane fx:id="gridPane" prefHeight="200.0" prefWidth="200.0" maxHeight="205.0" maxWidth="200.0">
             <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="50.0" />
@@ -35,18 +40,11 @@
             </rowConstraints>
         </GridPane>
     </VBox>
-
     <VBox alignment="CENTER">
-        <Label fx:id="winner" text="YOU WIN!" visible="false">
-            <font>
-                <Font name="System Bold" size="24" />
-            </font>
-            <textFill>
-                <Color green="0.4" />
-            </textFill>
-            <effect>
-                <DropShadow />
-            </effect>
+        <Label fx:id="timerLabel" text="00:00">
+        <font>
+            <Font name="System Bold" size="20" />
+        </font>
         </Label>
     </VBox>
 </VBox>
