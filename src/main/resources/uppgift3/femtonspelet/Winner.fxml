@@ -10,24 +10,22 @@
 <DialogPane prefHeight="260.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uppgift3.femtonspelet.WinnerController">
     <content>
     <Pane prefHeight="22.0" prefWidth="320.0">
-         <HBox alignment="CENTER">
-            <children>
-              <Label text="Grattis du vann!">
-              <font>
-                  <Font name="System Bold" size="24" />
-              </font>
-              <textFill>
-                  <Color green="0.4" />
-              </textFill>
-              <effect>
-                  <DropShadow />
-              </effect>
-                  <HBox.margin>
-                     <Insets left="75.0" />
-                  </HBox.margin>
-          </Label>
-            </children>
-         </HBox>
+        <HBox alignment="CENTER">
+            <Label text="Grattis du vann!">
+                <font>
+                    <Font name="System Bold" size="24"/>
+                </font>
+                <textFill>
+                    <Color green="0.4"/>
+                </textFill>
+                <effect>
+                    <DropShadow/>
+                </effect>
+                <HBox.margin>
+                    <Insets left="75.0"/>
+                </HBox.margin>
+            </Label>
+        </HBox>
         <HBox alignment="CENTER" layoutY="35.0" prefHeight="31.0" prefWidth="320.0">
             <Label text="Din tid: ">
                <font>

@@ -1,7 +1,6 @@
 package uppgift3.femtonspelet;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -11,7 +10,6 @@ import javafx.scene.control.ButtonBar;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Dialog;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -19,11 +17,7 @@ import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
-
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.Random;
 
@@ -39,7 +33,6 @@ public class FemtonController {
     private VBox mainVbox;
     private int elapsedSeconds = 0;
     private Timeline timerTimeline;
-
 
 
     public void initialize() {
@@ -213,64 +206,39 @@ public class FemtonController {
 
         return true;
     }
-@FXML
-    public void showWinnerDialog() {
-    timerTimeline.stop();
-
-    Dialog<ButtonType> dialog = new Dialog<>();
-    dialog.initOwner(mainVbox.getScene().getWindow());
-    dialog.setTitle("High-score tavlan");
-
-    try {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Winner.fxml"));
-        Parent root = loader.load();
-        dialog.getDialogPane().setContent(root);
-        WinnerController wc = loader.getController();
-        wc.initialize(timerLabel.getText());
-
-    ButtonType spara = new ButtonType("Spara", ButtonBar.ButtonData.OK_DONE);
-    ButtonType stang = new ButtonType("Stäng", ButtonBar.ButtonData.CANCEL_CLOSE);
-    dialog.getDialogPane().getButtonTypes().addAll(spara, stang);
-
-    Optional<ButtonType> result = dialog.showAndWait();
-
-    if (result.isPresent()) {
-        if (result.get() == spara) {
-            wc.clickedSpara();
-        } else if (result.get() == stang) {
-            dialog.close();
-        }
-    }
-    } catch (IOException e) {
-        System.out.println("Fel vid laddning av vinnar-dialogen!");
-        throw new RuntimeException(e);
-    }
-}
 
     @FXML
-    private void handleSolveButtonAction(MouseEvent event) {
+    public void showWinnerDialog() {
+        timerTimeline.stop();
 
-        resetPuzzleToSolvedState();
-    }
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(mainVbox.getScene().getWindow());
+        dialog.setTitle("High-score tavlan");
 
-    private void resetPuzzleToSolvedState() {
-        int number = 1;
-        for (int row = 0; row < 4; row++) {
-            for (int col = 0; col < 4; col++) {
-                if (row == 3 && col == 3) {
-                    puzzleLayout[row][col] = null;
-                } else {
-                    Group puzzlePiece = createPuzzlePiece(number);
-                    puzzleLayout[row][col] = puzzlePiece;
-                    number++;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Winner.fxml"));
+            Parent root = loader.load();
+            dialog.getDialogPane().setContent(root);
+            WinnerController wc = loader.getController();
+            wc.initialize(timerLabel.getText());
+
+            ButtonType spara = new ButtonType("Spara", ButtonBar.ButtonData.OK_DONE);
+            ButtonType stang = new ButtonType("Stäng", ButtonBar.ButtonData.CANCEL_CLOSE);
+            dialog.getDialogPane().getButtonTypes().addAll(spara, stang);
+
+            Optional<ButtonType> result = dialog.showAndWait();
+
+            if (result.isPresent()) {
+                if (result.get() == spara) {
+                    wc.clickedSpara();
+                } else if (result.get() == stang) {
+                    dialog.close();
                 }
             }
+        } catch (IOException e) {
+            System.out.println("Fel vid laddning av vinnar-dialogen!");
+            throw new RuntimeException(e);
         }
-
-        emptyRow = 3;
-        emptyCol = 3;
-
-        updatePuzzleUI();
-
     }
+
 }

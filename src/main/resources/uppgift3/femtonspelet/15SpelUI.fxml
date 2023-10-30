@@ -12,7 +12,7 @@
             </items>
         </MenuButton>
         <Pane HBox.hgrow="ALWAYS" />
-        <Button fx:id="instantWin" onMouseClicked="#handleSolveButtonAction" alignment="CENTER" mnemonicParsing="false" text="Instant win" visible="true" />
+        <Button fx:id="instantWin" alignment="CENTER" mnemonicParsing="false" text="Instant win" visible="false" />
     </ToolBar>
 
     <VBox>

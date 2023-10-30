@@ -15,33 +15,33 @@ public class WinnerController {
     @FXML
     private Label datum1;
     @FXML
-    public Label namn1;
+    private Label namn1;
     @FXML
-    public Label tid1;
+    private Label tid1;
     @FXML
-    public Label datum2;
+    private Label datum2;
     @FXML
-    public Label namn2;
+    private Label namn2;
     @FXML
-    public Label tid2;
+    private Label tid2;
     @FXML
-    public Label datum3;
+    private Label datum3;
     @FXML
-    public Label namn3;
+    private Label namn3;
     @FXML
-    public Label tid3;
+    private Label tid3;
     @FXML
-    public Label datum4;
+    private Label datum4;
     @FXML
-    public Label namn4;
+    private Label namn4;
     @FXML
-    public Label tid4;
+    private Label tid4;
     @FXML
-    public Label datum5;
+    private Label datum5;
     @FXML
-    public Label namn5;
+    private Label namn5;
     @FXML
-    public Label tid5;
+    private Label tid5;
     @FXML
     private String timerTiden;
 
