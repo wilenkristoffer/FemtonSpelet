@@ -2,8 +2,6 @@ package uppgift3.femtonspelet;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuItem;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
@@ -174,21 +172,31 @@ public class FemtonController {
 
     public void handleSetBlue() {
         currentColor = Color.DODGERBLUE;
-        initializePuzzle(currentColor);
+        changePuzzleColor(currentColor);
     }
 
     public void handleSetOrange() {
         currentColor = Color.ORANGE;
-        initializePuzzle(currentColor);
+        changePuzzleColor(currentColor);
     }
 
     public void handleSetRed() {
         currentColor = Color.RED;
-        initializePuzzle(currentColor);
+        changePuzzleColor(currentColor);
     }
 
     public void handleSetGreen() {
         currentColor = Color.GREEN;
-        initializePuzzle(currentColor);
+        changePuzzleColor(currentColor);
+    }
+    private void changePuzzleColor(Color color) {
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 4; col++) {
+                if (puzzleLayout[row][col] != null) {
+                    Rectangle rectangle = (Rectangle) puzzleLayout[row][col].getChildren().get(0);
+                    rectangle.setFill(color);
+                }
+            }
+        }
     }
 }
