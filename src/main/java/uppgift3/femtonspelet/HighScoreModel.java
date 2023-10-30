@@ -8,11 +8,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class HighScoreModel {
-    private List<HighScoreEntry> highScores;
-
-    public HighScoreModel() {
-        highScores = new ArrayList<>();
-    }
+    private final List<HighScoreEntry> highScores = new ArrayList<>();
 
     public void addHighScore(String datum, String namn, String tid) {
         highScores.add(new HighScoreEntry(datum, namn, tid));
@@ -22,59 +18,34 @@ public class HighScoreModel {
     public List<HighScoreEntry> getHighScores() {
         return highScores;
     }
-
     public void sortHighScores() {
         Collections.sort(highScores, Comparator.comparing(HighScoreEntry::getTid));
     }
-
+    //Metod som läser in filen och delar upp datum, namn och tid.
     public void loadHighScoresFromFile(String fileName) {
-        try (BufferedReader br = new BufferedReader(new FileReader("src/main/java/uppgift3/femtonspelet/highscore.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
             String line;
-            int lineCounter = 1;
-
-            while ((line = br.readLine()) != null && lineCounter <= 5) {
+            while ((line = br.readLine()) != null) {
                 String[] parts = line.split(", ");
                 String datum = parts[0];
                 String namn = parts[1];
                 String tid = parts[2];
-                if (lineCounter == 1) {
-                    datum1.setText(datum);
-                    namn1.setText(namn);
-                    tid1.setText(tid);
-                } else if (lineCounter == 2) {
-                    datum2.setText(datum);
-                    namn2.setText(namn);
-                    tid2.setText(tid);
-                } else if (lineCounter == 3) {
-                    datum3.setText(datum);
-                    namn3.setText(namn);
-                    tid3.setText(tid);
-                } else if (lineCounter == 4) {
-                    datum4.setText(datum);
-                    namn4.setText(namn);
-                    tid4.setText(tid);
-                } else if (lineCounter == 5) {
-                    datum5.setText(datum);
-                    namn5.setText(namn);
-                    tid5.setText(tid);
-                }
 
-                lineCounter++;
+                addHighScore(datum, namn, tid);
             }
-
+            sortHighScores();
         } catch (IOException e) {
-            System.out.println("Det gick inte att läsa in filen!");
+            System.out.println("Fel vid inläsning av fil.");
             throw new RuntimeException(e);
         }
-
     }
-
-    // Other methods related to the model's functionality
-
-    public class HighScoreEntry {
-        private String datum;
-        private String namn;
-        private String tid;
+    //Klass som har hand om data för listan, vi skapar upp och hanterar instanser av klassen.
+    //När vi läser från filen så skapar vi upp ett objekt för varje "inlägg" vi har i filen och adderar de till listan.
+    //Kan göras till en Record klass.
+    public static class HighScoreEntry {
+        private final String datum;
+        private final String namn;
+        private final String tid;
 
         public HighScoreEntry(String datum, String namn, String tid) {
             this.datum = datum;

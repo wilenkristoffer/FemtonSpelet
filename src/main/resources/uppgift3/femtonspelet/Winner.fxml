@@ -29,7 +29,7 @@
             </children>
          </HBox>
         <HBox alignment="CENTER" layoutY="35.0" prefHeight="31.0" prefWidth="320.0">
-            <Label text="Din tid:">
+            <Label text="Din tid: ">
                <font>
                   <Font size="14.0" />
                </font>
