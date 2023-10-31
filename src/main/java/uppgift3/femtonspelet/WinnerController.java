@@ -10,6 +10,7 @@ import java.util.List;
 
 public class WinnerController {
     private String filNamn = "src/main/java/uppgift3/femtonspelet/highscore.txt";
+    @FXML
     public TextField nedskrivetNamn;
     public Label tiden;
     @FXML
@@ -47,6 +48,7 @@ public class WinnerController {
 
     @FXML
     public void initialize(String timerText) {
+
         //Får in tiden som användaren klarade spelet på, sparas till filen.
         this.timerTiden = timerText;
         HighScoreModel hsm = new HighScoreModel();
@@ -95,11 +97,11 @@ public class WinnerController {
         //Metoden som kallas när man klickar på spara, sparar ner data till filen.
     public void clickedSpara() {
 
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(filNamn, true))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(filNamn, true))) {
             LocalDate now = LocalDate.now();
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yy-MM-dd");
             String formattedDate = now.format(formatter);
-            bw.write(formattedDate+ ", " + nedskrivetNamn.getText() + ", " + timerTiden);
+            bw.write(formattedDate + ", " + nedskrivetNamn.getText() + ", " + timerTiden);
             bw.newLine();
 
 
@@ -108,8 +110,14 @@ public class WinnerController {
             System.out.println("Fel vid skrivning till fil!");
             throw new RuntimeException(e);
         }
+    }
+    //Kan inte sätta visible false på nedskrivetNamn i lookup i handleHighScoreDialog.
+    //Set-metod för att göra det här när man kallar på handleHighScoreDialog.
+        public void setNedskrivetNamnToFalse(){
+            nedskrivetNamn.setVisible(false);
+
+        }
 
 }
 
 
-}

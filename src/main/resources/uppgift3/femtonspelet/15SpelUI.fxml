@@ -10,8 +10,7 @@
         <MenuButton mnemonicParsing="false" text="Meny">
             <items>
                 <MenuItem mnemonicParsing="false" onAction="#nyttSpel" text="Nytt spel" />
-                <MenuItem mnemonicParsing="false" text="Toggle admin" />
-                <Menu text="Färg">
+                <Menu text="Ändra färg">
                     <items>
                         <MenuItem onAction="#handleSetBlue" text="Blå" />
                         <MenuItem onAction="#handleSetOrange" text="Orange" />
@@ -19,6 +18,8 @@
                         <MenuItem onAction="#handleSetGreen" text="Grön" />
                     </items>
                 </Menu>
+                <MenuItem mnemonicParsing="false" onAction="#handleHighScoreDialog" text="High-Score" />
+                <MenuItem mnemonicParsing="false" text="Toggle Admin" />
             </items>
         </MenuButton>
         <Pane HBox.hgrow="ALWAYS" />

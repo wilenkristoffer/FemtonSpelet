@@ -11,7 +11,7 @@
     <content>
     <Pane prefHeight="22.0" prefWidth="320.0">
         <HBox alignment="CENTER">
-            <Label text="Grattis du vann!">
+            <Label fx:id="winnerLabel" text="Grattis du vann!">
                 <font>
                     <Font name="System Bold" size="24"/>
                 </font>
@@ -26,8 +26,8 @@
                 </HBox.margin>
             </Label>
         </HBox>
-        <HBox alignment="CENTER" layoutY="35.0" prefHeight="31.0" prefWidth="320.0">
-            <Label text="Din tid: ">
+        <HBox fx:id="dinTid" alignment="CENTER" layoutY="35.0" prefHeight="31.0" prefWidth="320.0">
+            <Label  text="Din tid: ">
                <font>
                   <Font size="14.0" />
                </font>
@@ -103,14 +103,13 @@
         </VBox>
         <VBox layoutY="200.0" prefHeight="50.0" prefWidth="370.0">
             <HBox>
-                <Label text="Ditt namn:">
+                <Label fx:id="dittNamn" text="Ditt namn:">
                     <font>
                    <Font size="16.0" />
                     </font>
                 </Label>
                 <Region prefHeight="10.0" prefWidth="10.0" />
                 <TextField fx:id="nedskrivetNamn" maxWidth="200.0" />
-
             </HBox>
         </VBox>
     </Pane>

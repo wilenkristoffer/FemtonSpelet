@@ -6,11 +6,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
 import javafx.scene.Parent;
-import javafx.scene.control.ButtonBar;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.Dialog;
-import javafx.scene.control.Label;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
@@ -26,7 +24,6 @@ public class FemtonController {
     public Label timerLabel;
     @FXML
     private GridPane gridPane;
-
     private Group[][] puzzleLayout;
     private int emptyRow;
     private int emptyCol;
@@ -185,9 +182,7 @@ public class FemtonController {
     }
 
     public void nyttSpel(ActionEvent actionEvent) {
-
-        shufflePuzzle();
-        updatePuzzleUI();
+        initialize();
 
     }
 
@@ -214,7 +209,6 @@ public class FemtonController {
 
         return true;
     }
-
     @FXML
     public void showWinnerDialog() {
         timerTimeline.stop();
@@ -278,4 +272,40 @@ public class FemtonController {
             }
         }
     }
+//Visar winner UI men utan allt som visas för en som har vunnit spelet
+    public void handleHighScoreDialog(ActionEvent actionEvent) {
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initOwner(mainVbox.getScene().getWindow());
+        dialog.setTitle("High-score tavlan");
+
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("Winner.fxml"));
+            Parent root = loader.load();
+            dialog.getDialogPane().setContent(root);
+            WinnerController wc = loader.getController();
+            wc.initialize(null);
+            wc.setNedskrivetNamnToFalse();
+            Label winnerLabel = (Label) root.lookup("#winnerLabel");
+            HBox dinTid = (HBox)root.lookup("#dinTid");
+            Label dittNamn = (Label)root.lookup("#dittNamn");
+            winnerLabel.setVisible(false);
+            dinTid.setVisible(false);
+            dittNamn.setVisible(false);
+
+            ButtonType stang = new ButtonType("Stäng", ButtonBar.ButtonData.CANCEL_CLOSE);
+            dialog.getDialogPane().getButtonTypes().addAll(stang);
+
+            Optional<ButtonType> result = dialog.showAndWait();
+
+            if (result.isPresent()) {
+              if (result.get() == stang) {
+                    dialog.close();
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Fel vid laddning av high-score-dialogen!");
+            throw new RuntimeException(e);
+        }
+    }
 }
+
