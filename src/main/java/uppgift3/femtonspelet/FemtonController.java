@@ -288,9 +288,11 @@ public class FemtonController {
             Label winnerLabel = (Label) root.lookup("#winnerLabel");
             HBox dinTid = (HBox)root.lookup("#dinTid");
             Label dittNamn = (Label)root.lookup("#dittNamn");
+            Label highScore = (Label)root.lookup("#highScore");
             winnerLabel.setVisible(false);
             dinTid.setVisible(false);
             dittNamn.setVisible(false);
+            highScore.setVisible(true);
 
             ButtonType stang = new ButtonType("Stäng", ButtonBar.ButtonData.CANCEL_CLOSE);
             dialog.getDialogPane().getButtonTypes().addAll(stang);

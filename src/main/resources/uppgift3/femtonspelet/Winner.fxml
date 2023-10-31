@@ -10,24 +10,42 @@
 <DialogPane prefHeight="260.0" prefWidth="320.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="uppgift3.femtonspelet.WinnerController">
     <content>
     <Pane prefHeight="22.0" prefWidth="320.0">
+         <VBox layoutX="47.0" prefHeight="86.0" prefWidth="244.0">
+             <padding>
+                 <Insets bottom="10" right="10" top="10" />
+             </padding>
+            <children>
+               <Label fx:id="highScore" text="High-Score listan!" visible="false">
+                <font>
+                    <Font name="System Bold" size="24" />
+                </font>
+                <textFill>
+                    <Color green="0.4" />
+                </textFill>
+                <effect>
+                    <DropShadow />
+                </effect>
+                </Label>
+            </children>
+         </VBox>
         <HBox alignment="CENTER">
             <Label fx:id="winnerLabel" text="Grattis du vann!">
                 <font>
-                    <Font name="System Bold" size="24"/>
+                    <Font name="System Bold" size="24" />
                 </font>
                 <textFill>
-                    <Color green="0.4"/>
+                    <Color green="0.4" />
                 </textFill>
                 <effect>
-                    <DropShadow/>
+                    <DropShadow />
                 </effect>
                 <HBox.margin>
-                    <Insets left="75.0"/>
+                    <Insets left="65.0" />
                 </HBox.margin>
             </Label>
         </HBox>
-        <HBox fx:id="dinTid" alignment="CENTER" layoutY="35.0" prefHeight="31.0" prefWidth="320.0">
-            <Label  text="Din tid: ">
+        <HBox fx:id="dinTid" alignment="CENTER" layoutY="35.0" prefHeight="31.0" prefWidth="293.0">
+            <Label text="Din tid: ">
                <font>
                   <Font size="14.0" />
                </font>
@@ -43,7 +61,7 @@
                     -fx-font-weight: bold;
                 </style></Label>
         </HBox>
-        <VBox layoutY="80.0" prefHeight="100.0" prefWidth="370.0">
+        <VBox style="-fx-border-color: green green; -fx-border-width: 1 0 1 0;" layoutY="80.0" prefHeight="106.0" prefWidth="320.0">
             <HBox>
                 <Label text="Datum:" />
                 <Region prefHeight="10.0" prefWidth="90.0" />
@@ -101,7 +119,7 @@
                 <Label fx:id="tid5" text="tid5" />
             </HBox>
         </VBox>
-        <VBox layoutY="200.0" prefHeight="50.0" prefWidth="370.0">
+        <VBox layoutY="200.0" prefHeight="50.0" prefWidth="320.0">
             <HBox>
                 <Label fx:id="dittNamn" text="Ditt namn:">
                     <font>
@@ -109,7 +127,7 @@
                     </font>
                 </Label>
                 <Region prefHeight="10.0" prefWidth="10.0" />
-                <TextField fx:id="nedskrivetNamn" maxWidth="200.0" />
+                <TextField fx:id="nedskrivetNamn" maxWidth="200.0" prefHeight="26.0" prefWidth="200.0" />
             </HBox>
         </VBox>
     </Pane>
