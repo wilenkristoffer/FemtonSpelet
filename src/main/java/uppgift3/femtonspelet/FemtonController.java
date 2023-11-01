@@ -71,7 +71,6 @@ public class FemtonController {
                 if (row == 3 && col == 3) {
                     puzzleLayout[row][col] = null;
                 } else {
-
                     Group puzzlePiece = createPuzzlePiece(number, color);
                     puzzleLayout[row][col] = puzzlePiece;
                     gridPane.add(puzzlePiece, col, row);
