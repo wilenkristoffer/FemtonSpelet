@@ -22,6 +22,7 @@ import java.util.Random;
 public class FemtonController {
     @FXML
     public Label timerLabel;
+    public Button instantWin;
     @FXML
     private GridPane gridPane;
     private Group[][] puzzleLayout;
@@ -307,5 +308,35 @@ public class FemtonController {
             throw new RuntimeException(e);
         }
     }
+
+    public void handleToggleAdmin(ActionEvent actionEvent) {
+        instantWin.setVisible(true);
+    }
+
+    public void handleInstatWin(ActionEvent actionEvent) {
+        resetPuzzleToSolvedState();
+    }
+    private void resetPuzzleToSolvedState() {
+        int number = 1;
+        for (int row = 0; row < 4; row++) {
+            for (int col = 0; col < 4; col++) {
+                if (row == 3 && col == 3) {
+                    puzzleLayout[row][col] = null;
+                } else {
+                    Group puzzlePiece = createPuzzlePiece(number,currentColor);
+                    puzzleLayout[row][col] = puzzlePiece;
+                    number++;
+                }
+            }
+        }
+
+        emptyRow = 3;
+        emptyCol = 3;
+
+        updatePuzzleUI();
+
+
+    }
 }
+
 
