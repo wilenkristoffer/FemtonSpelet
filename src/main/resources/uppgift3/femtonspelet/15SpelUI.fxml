@@ -19,11 +19,11 @@
                     </items>
                 </Menu>
                 <MenuItem mnemonicParsing="false" onAction="#handleHighScoreDialog" text="High-Score" />
-                <MenuItem mnemonicParsing="false" text="Toggle Admin" />
+                <MenuItem mnemonicParsing="false" text="Toggle Admin" onAction="#handleToggleAdmin"/>
             </items>
         </MenuButton>
         <Pane HBox.hgrow="ALWAYS" />
-        <Button fx:id="instantWin" alignment="CENTER" mnemonicParsing="false" text="Instant win" visible="false" />
+        <Button fx:id="instantWin" alignment="CENTER" mnemonicParsing="false" onAction="#handleInstatWin" text="Instant win" visible="false" />
     </ToolBar>
 
     <VBox>
