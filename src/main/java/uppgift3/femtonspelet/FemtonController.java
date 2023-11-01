@@ -182,7 +182,8 @@ public class FemtonController {
     }
 
     public void nyttSpel(ActionEvent actionEvent) {
-        initialize();
+        shufflePuzzle();
+        updatePuzzleUI();
 
     }
 
@@ -314,7 +315,7 @@ public class FemtonController {
         instantWin.setVisible(true);
     }
 
-    public void handleInstatWin(ActionEvent actionEvent) {
+    public void handleInstantWin(ActionEvent actionEvent) {
         resetPuzzleToSolvedState();
     }
     private void resetPuzzleToSolvedState() {

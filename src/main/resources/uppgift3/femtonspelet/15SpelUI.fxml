@@ -23,7 +23,7 @@
             </items>
         </MenuButton>
         <Pane HBox.hgrow="ALWAYS" />
-        <Button fx:id="instantWin" alignment="CENTER" mnemonicParsing="false" onAction="#handleInstatWin" text="Instant win" visible="false" />
+        <Button fx:id="instantWin" alignment="CENTER" mnemonicParsing="false" onAction="#handleInstantWin" text="Instant win" visible="false" />
     </ToolBar>
 
     <VBox>
