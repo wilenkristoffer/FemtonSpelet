@@ -182,9 +182,17 @@ public class FemtonController {
     }
 
     public void nyttSpel(ActionEvent actionEvent) {
+        if (timerTimeline != null) {
+            timerTimeline.stop();
+            timerTimeline.playFrom(Duration.ZERO);
+
+        elapsedSeconds = 0;
+
         shufflePuzzle();
         updatePuzzleUI();
 
+
+    }
     }
 
     private boolean isPuzzleSolved() {
